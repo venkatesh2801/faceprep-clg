@@ -1,0 +1,112 @@
+use org123;
+
+select * from worker;
+
+#order-by
+select department,first_name from worker where department = 'Admin'
+order by first_name asc;
+select first_name,department,salary from worker where department = "HR" order by salary desc;
+select first_name, last_name, department,salary from worker where department = "Admin" 
+order by department asc, salary desc;
+
+#group-by
+select sum(salary),department from worker group by department;
+select department, avg(salary) from worker group by department;
+select department, max(salary) from worker group by department;
+select department, count(*) as employee_count from worker group by department;
+select department, min(first_name) as sample_first_name, count(*) as employees from worker
+group by department;
+
+select department,sum(salary) as total_salary from worker group by department
+order by total_salary desc;
+
+#1. Count employees not in HR or Admin.
+select count(*) as total_workers from worker where department not in('hr','admin');
+#2. Find the highest salary in each department.
+select department, max(salary) from worker group by department;
+
+#trim
+insert into worker values(
+13,"   venkatesh   ","     b     ",1000000,'2014-05-20 09:00:00',"CEO");
+select worker_id,ltrim(first_name) as cleaned_first_name from worker;
+SELECT WORKER_ID, RTRIM(FIRST_NAME) AS cleaned_first_name
+FROM worker;
+select trim(first_name) as cleaned_first_name from worker;
+delete from worker where worker_id = 13;
+
+#upper and lower case
+select first_name,last_name,upper(first_name),upper(last_name) from worker;
+select first_name,last_name,lower(first_name),lower(last_name) from worker;
+SELECT CONCAT(UPPER(FIRST_NAME), ' ', UPPER(LAST_NAME)) AS full_upper,
+       CONCAT(LOWER(FIRST_NAME), ' ', LOWER(LAST_NAME)) AS full_lower
+FROM worker;
+select concat(upper(substring(first_name,1,1)),lower(substring(first_name,2))) as proper_first_name,
+concat(upper(substring(last_name,1,1)),lower(substring(last_name,2))) as proper_last_name from worker;
+
+#offset-limit
+select * from worker order by worker_id limit 5;
+select * from worker order by worker_id 
+limit 7 offset 1;
+select * from worker order by worker_id 
+limit 1 offset 3;
+SELECT *
+FROM worker
+ORDER BY worker_id DESC
+LIMIT 3;
+
+select * from(
+	select *,row_number() over (order by worker_id) as  rn 
+    from worker
+) as temp
+where rn>5;
+
+#having
+#1. Find departments with average salary > 100000.
+select department,avg(salary) from worker 
+group by department having avg(salary)>100000;
+
+#2. Find departments where max salary is exactly 500000.
+select department,max(salary) from worker 
+group by department having max(salary) = 500000;
+
+#3. Find departments with more than 1 employee and total salary > 100000.
+select department,count(*),sum(salary) from worker
+group by department having count(*)>1 and sum(salary)> 100000;
+
+#4. Find departments with avg salary between 50000 and 200000.
+select department,avg(salary) as avg_salary from worker
+group by department having avg_salary between 50000 and 200000;
+
+#subqueries
+create table award_winners(
+id int,
+name varchar(25),
+award_name varchar(30));
+
+insert into award_winners values(001,'Karthick','Volleyball winners'),(002,'Gopi','Basketball Runners'),(003,'Adib','Oscar winners'),
+(004,'Harij','English SpellBee 2nd Runner-up'),(005,'Loki','Volleyball winners'),(006,'Sakthi','Badminton Nationals runners'),
+(007,'Iqhlas','Debug winners'),(008,'AK','Basketball runners'),(009,'Kamal','Hackathon runners'),
+(010,'Barath','Hackathon winners');
+
+select * from award_winners;
+
+create table students(
+id int,
+name varchar(25));
+
+insert into students values(005,'Loki'),(1001,'Srihari'),(1003,'Dinesh'),(001,'Karthick'),(1005,'Tharun'),
+(1006,'Vamsi'),(1007,'Monish'),(1008,'Rohith'),(1009,'Alwyn'),(1010,'Akash');
+
+select * from students;
+
+select * from students 
+where id=(select id from award_winners where id=5);
+select * from students 
+where id=(select id from award_winners where name="karthick");
+select * from award_winners
+where id=(select id from students where id=1);
+select * from award_winners
+where id=(select id from students where name="Loki");
+
+select name from award_winners where id in(
+	select id from award_winners group by id having count(*)>1);
