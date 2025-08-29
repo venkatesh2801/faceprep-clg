@@ -1,0 +1,116 @@
+show databases;
+create database worker;
+use worker;
+-- Worker table
+CREATE TABLE worker (
+    worker_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50),
+    department_id INT,
+    salary INT
+);
+
+-- Department table
+CREATE TABLE department (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(50)
+);
+-- Workers
+INSERT INTO worker (first_name, department_id, salary) VALUES
+('Vishal', 1, 300000),
+('Amitabh', 2, 500000),
+('Vivek', 2, 500000),
+('Vipul', 3, 200000),
+('Rajesh', NULL, 250000);   -- No department
+
+-- Departments
+INSERT INTO department (department_id, department_name) VALUES
+(1, 'HR'),
+(2, 'Admin'),
+(3, 'Account'),
+(4, 'IT');   -- IT department has no workers
+
+select * from worker;
+select * from department;
+
+#inner_join
+select w.first_name,d.department_name from worker w inner join department d on w.department_id = d.department_id;
+
+#left_outer_join
+select w.first_name, d.department_name from worker w left join department d on w.department_id = d.department_id;
+
+#right_outer_join
+select w.first_name, d.department_name from worker w right join department d on w.department_id = d.department_id;
+
+#full_outer_join
+SELECT w.first_name, d.department_name
+FROM worker w
+LEFT JOIN department d 
+    ON w.department_id = d.department_id
+
+UNION
+
+SELECT w.first_name, d.department_name
+FROM worker w
+RIGHT JOIN department d 
+    ON w.department_id = d.department_id;
+    
+#cross_join
+select w.first_name,d.department_name from worker w cross join department d;
+
+#natural_join
+select * from worker natural join department;
+
+#Show all workers along with their department names. If a worker has no department, still display them.
+SELECT w.first_name, d.department_name
+FROM worker w
+LEFT JOIN department d 
+    ON w.department_id = d.department_id ;
+
+#List all departments and their workers. If a department has no workers, still display it.
+SELECT w.first_name, d.department_name
+FROM worker w
+RIGHT JOIN department d 
+    ON w.department_id = d.department_id;
+    
+#Get the names of workers and departments, but only for workers who are actually assigned to a department.
+select w.first_name, d.department_name from worker w inner join department d on w.department_id = d.department_id;
+select w.first_name, d.department_name from worker w natural join department d ;
+
+#Show all possible pairs of workers and departments (even unrelated ones).
+select * from worker cross join department;
+
+#Get a list of all workers and departments, including those without matches on either side.
+SELECT w.first_name, d.department_name
+FROM worker w
+LEFT JOIN department d ON w.department_id = d.department_id
+UNION
+SELECT w.first_name, d.department_name
+FROM worker w
+RIGHT JOIN department d ON w.department_id = d.department_id;
+
+#Find workers who are not assigned to any department.
+SELECT first_name
+FROM worker
+WHERE department_id IS NULL;
+
+#Find departments that have no workers.
+SELECT department_name
+FROM department d
+LEFT JOIN worker w 
+ON d.department_id = w.department_id
+WHERE w.worker_id IS NULL;
+
+#8. Workers from "Admin" department with salary.
+select w.first_name, d.department_name,w.salary from worker w inner join department d on w.department_id = d.department_id 
+where  d.department_name = 'Admin';
+
+#Get a list of workers whose salary is higher than at least one worker in the "HR" department.
+select first_name,salary from worker where salary>
+	(select min(salary) from worker w join department d on w.department_id = d.department_id where d.department_name = 'HR');
+
+#10. Workers with department names, sorted by department then salary desc.
+SELECT w.first_name, d.department_name, w.salary
+FROM worker w
+LEFT JOIN department d 
+ON w.department_id = d.department_id
+ORDER BY d.department_name ASC, w.salary DESC;
