@@ -1,0 +1,39 @@
+<!-- index2.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theme Switcher Demo</title>
+<link rel="stylesheet" href="style2.css">
+</head>
+<body>
+<button id="themeToggle">Toggle Theme</button>
+<div class="container">
+<h2>Theme Demonstration</h2>
+<p>This paragraph demonstrates the style change between themes.</p>
+</div>
+</body>
+</html>
+
+<!-- style2.css -->
+body {
+    background-color: white; /* Light mode default */
+    color: black;
+    transition: 0.3s ease;
+}
+
+body.dark-theme {
+    background-color: #282c34;
+    color: #f2f2f2;
+}
+
+body.dark-theme .container {
+    border: 2px solid #5C6773;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+}
