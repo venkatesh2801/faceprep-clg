@@ -1,0 +1,41 @@
+package nov19;
+public class OMRKing {
+	public static void main(String[] args) {
+
+		Program1 program=new Program1(100);
+		
+		program.addition();
+		
+	}
+}
+class Program1{
+	int marks=95; //class variable
+	//user def methods
+	protected void addition(){
+		int result= marks*100;
+		System.out.println(result);
+		//method local inner class
+		class InsideClass{
+			void division(){
+				System.out.println("method Local inner class output");
+			}
+		}
+	}
+	//initi block
+	{
+		System.out.println("Welcome...!");
+		String date="19th Nov 2025";
+		System.out.println(date);
+	}
+	
+	//constru //def //parame
+	public Program1() {
+		System.out.println("Iam a def const..");
+	}
+	public Program1(int a){
+		a=marks+a;
+		System.out.println(a);
+	}
+	
+	
+}

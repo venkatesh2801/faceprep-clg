@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Feedback</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Search Feedback</h2>
+
+    <button onclick="goBack()" class="back-btn">⬅ Back</button>
+
+    <hr>
+
+    <div class="input-group">
+        <input type="text" id="keyword" placeholder="Enter keyword...">
+        <button onclick="searchFeedback()" class="btn">Search</button>
+    </div>
+
+    <h3>Results</h3>
+    <div id="search-results" class="list-box">
+        Enter a keyword to begin searching.
+    </div>
+
+</div>
+
+<script src="../assets/js/api/auth.js"></script>
+<script src="../assets/js/api/feedback.js"></script>
+<script src="../assets/js/pages/search-feedback.js"></script>
+
+</body>
+</html>

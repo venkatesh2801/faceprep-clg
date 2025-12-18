@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - FeedbackHub</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <!-- Modal Container -->
+    <div id="modal-container"></div>
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h2>FeedbackHub <span class="text-muted" style="font-size: 0.875rem;">Admin</span></h2>
+        <div class="navbar-links">
+            <span id="adminName" class="text-muted"></span>
+            <button class="logout-btn" onclick="logout()">
+                <span class="material-icons" style="font-size: 1rem;">logout</span>
+                Logout
+            </button>
+        </div>
+    </nav>
+
+    <div class="container fade-in">
+        <h1>Admin Dashboard</h1>
+        <p class="text-muted mb-4">Manage users, feedback, and view analytics</p>
+
+        <!-- Stats -->
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-value" id="totalUsers">--</div>
+                <div class="stat-label">Total Users</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="totalFeedback">--</div>
+                <div class="stat-label">Total Feedback</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="totalProviders">--</div>
+                <div class="stat-label">Providers</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="avgRating">--</div>
+                <div class="stat-label">Avg Rating</div>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="charts-grid">
+            <div class="chart-box">
+                <h3>User Distribution</h3>
+                <div class="chart-container">
+                    <canvas id="userChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-box">
+                <h3>Rating Distribution</h3>
+                <div class="chart-container">
+                    <canvas id="ratingChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="button-row mb-4">
+            <button class="btn btn-primary" onclick="showTab('users')" id="usersTabBtn">
+                <span class="material-icons" style="font-size: 1rem;">people</span>
+                Manage Users
+            </button>
+            <button class="btn btn-secondary" onclick="showTab('feedback')" id="feedbackTabBtn">
+                <span class="material-icons" style="font-size: 1rem;">rate_review</span>
+                All Feedback
+            </button>
+            <button class="btn btn-secondary" onclick="showTab('providers')" id="providersTabBtn">
+                <span class="material-icons" style="font-size: 1rem;">store</span>
+                By Provider
+            </button>
+        </div>
+
+        <!-- Users Tab -->
+        <div id="usersTab" class="list-box">
+            <div class="search-box">
+                <input type="text" id="userSearch" placeholder="Search users by name or email..." onkeyup="filterUsers()" />
+                <button class="btn btn-secondary" onclick="filterUsers()">
+                    <span class="material-icons" style="font-size: 1rem;">search</span>
+                </button>
+            </div>
+            <h3 class="mb-3">All Users</h3>
+            <div id="usersContainer">
+                <div class="loading"></div>
+                <p class="text-muted mt-2">Loading users...</p>
+            </div>
+        </div>
+
+        <!-- Feedback Tab -->
+        <div id="feedbackTab" class="list-box hidden">
+            <div class="search-box">
+                <input type="text" id="feedbackSearch" placeholder="Search feedback..." onkeyup="filterFeedback()" />
+                <button class="btn btn-secondary" onclick="filterFeedback()">
+                    <span class="material-icons" style="font-size: 1rem;">search</span>
+                </button>
+            </div>
+            <h3 class="mb-3">All Feedback</h3>
+            <div id="feedbackContainer">
+                <div class="loading"></div>
+                <p class="text-muted mt-2">Loading feedback...</p>
+            </div>
+        </div>
+
+        <!-- Providers Tab -->
+        <div id="providersTab" class="list-box hidden">
+            <h3 class="mb-3">Feedback by Provider</h3>
+            <div class="form-group">
+                <select id="providerSelect" onchange="loadProviderFeedback()">
+                    <option value="">Select a provider...</option>
+                </select>
+            </div>
+            <div id="providerFeedbackContainer">
+                <div class="empty-state">
+                    <span class="material-icons empty-state-icon">store</span>
+                    <p>Select a provider to view their feedback</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="../assets/js/utils/modal.js"></script>
+<script src="../assets/js/api/auth.js"></script>
+<script src="../assets/js/pages/admin-dashboard.js"></script>
+
+</body>
+</html>

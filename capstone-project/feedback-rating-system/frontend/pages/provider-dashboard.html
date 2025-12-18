@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Provider Dashboard - FeedbackHub</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Modal & Toast Containers -->
+    <div id="modal-container"></div>
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h2>FeedbackHub</h2>
+        <div class="navbar-links">
+            <span id="providerName" class="text-muted"></span>
+            <button class="logout-btn" onclick="logout()">
+                <span class="material-icons" style="font-size: 1rem;">logout</span>
+                Logout
+            </button>
+        </div>
+    </nav>
+
+    <div class="container fade-in">
+        <h1>Provider Dashboard</h1>
+        <p class="text-muted mb-4">View your ratings and feedback from users</p>
+
+        <!-- Stats -->
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-value" id="avgRating">--</div>
+                <div class="stat-label">Average Rating</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="totalFeedback">--</div>
+                <div class="stat-label">Total Feedback</div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="button-row mb-4">
+            <button class="btn btn-secondary" onclick="goTo('search-feedback.html')">
+                <span class="material-icons" style="font-size: 1rem;">search</span>
+                Search Feedback
+            </button>
+            <button class="btn btn-secondary" onclick="goTo('filter-feedback.html')">
+                <span class="material-icons" style="font-size: 1rem;">filter_alt</span>
+                Filter Feedback
+            </button>
+        </div>
+
+        <hr>
+
+        <h2 class="text-left">Feedback Received</h2>
+
+        <div id="feedbackContainer" class="list-box">
+            <div class="loading"></div>
+            <p class="text-muted mt-2">Loading feedback...</p>
+        </div>
+    </div>
+
+<script src="../assets/js/utils/modal.js"></script>
+<script src="../assets/js/api/auth.js"></script>
+<script src="../assets/js/api/feedback.js"></script>
+<script src="../assets/js/pages/provider-dashboard.js"></script>
+
+</body>
+</html>

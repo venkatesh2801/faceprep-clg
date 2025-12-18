@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Feedback - FeedbackHub</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Modal & Toast Containers -->
+    <div id="modal-container"></div>
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h2>FeedbackHub</h2>
+        <div class="navbar-links">
+            <a href="dashboard.html">Dashboard</a>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <button class="back-btn" onclick="goBack()">
+            <span class="material-icons" style="font-size: 1rem;">arrow_back</span>
+            Back to My Feedback
+        </button>
+
+        <div class="form-box fade-in">
+            <h2>Edit Feedback</h2>
+            <p class="text-muted mb-3">Update your feedback</p>
+
+            <div class="form-group">
+                <label>Provider</label>
+                <input type="text" id="providerName" disabled />
+            </div>
+
+            <div class="form-group">
+                <label>Rating</label>
+                <div class="star-rating" id="starRating">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+                <input type="hidden" id="rating" value="0" />
+            </div>
+
+            <div class="form-group">
+                <label for="comment">Your Feedback</label>
+                <textarea id="comment" placeholder="Update your feedback..."></textarea>
+            </div>
+
+            <button onclick="updateFeedback()" style="width: 100%;">
+                <span class="material-icons" style="font-size: 1.25rem;">save</span>
+                Save Changes
+            </button>
+        </div>
+    </div>
+
+<script src="../assets/js/utils/modal.js"></script>
+<script src="../assets/js/api/auth.js"></script>
+<script src="../assets/js/pages/edit-feedback.js"></script>
+
+</body>
+</html>

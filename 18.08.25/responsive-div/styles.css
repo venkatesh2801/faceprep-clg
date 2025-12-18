@@ -1,0 +1,131 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+h1{
+    text-align: center;
+}
+#top-box{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+#box{
+    height: 500px;
+    width: 500px;
+    margin: 30px;
+}
+#layer1{
+    height: 500px;
+    width: 500px;
+    background-color: brown;
+    position: relative;
+}
+#layer2{
+    height: 480px;
+    width: 480px;
+    background-color: yellow;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#layer3{
+    height: 350px;
+    width: 350px;
+    background-color: rgba(0, 106, 255, 0.748);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#text-content{
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#adjustment-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+#adj-box{
+    height: 250px;
+    width: 600px;
+    background-color: rgba(0, 0, 0, 0.119);
+    padding: 20px;
+}
+#adj-box div {
+    display: flex;
+    align-items: center;   
+    gap: 10px;             
+    margin-bottom: 30px;
+    margin-top: 40px;
+}
+
+#adj-box p {
+    margin: 0;             
+    width: 80px;       
+}
+#components > h1{
+    text-align: center;
+}
+#components{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+#components-box{
+   height: 400px;
+   width: 700px;
+   background-color: rgba(0, 0, 0, 0.107);
+   padding: 20px;
+}
+.component-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;   
+    margin-bottom: 15px; 
+}
+#components-margin{
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    border-style: dotted;
+}
+#components-border{
+    height: 20px;
+    width: 20px;
+    background-color: brown;    
+}
+#components-padding{
+    height: 20px;
+    width: 20px;
+    background-color:yellow;    
+}
+
+#components-content{
+    height: 20px;
+    width: 20px;
+    background-color: rgba(0, 106, 255, 0.748);    
+}
+
+@media (max-width:768px){
+    #adj-box{
+        height: auto;
+        width: 300px;
+    }
+    #components-box{
+        width: 400px;
+        height: auto;
+    }
+   
+}

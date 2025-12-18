@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Feedback - FeedbackHub</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Modal & Toast Containers -->
+    <div id="modal-container"></div>
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h2>FeedbackHub</h2>
+        <div class="navbar-links">
+            <a href="dashboard.html">Dashboard</a>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <button class="back-btn" onclick="goBack()">
+            <span class="material-icons" style="font-size: 1rem;">arrow_back</span>
+            Back to Dashboard
+        </button>
+
+        <h1 class="fade-in">Search Feedback</h1>
+        <p class="text-muted mb-4">Find feedback by keywords</p>
+
+        <div class="input-group fade-in">
+            <input type="text" id="keyword" placeholder="Enter search keyword..." />
+            <button onclick="searchFeedback()">
+                <span class="material-icons" style="font-size: 1rem;">search</span>
+                Search
+            </button>
+        </div>
+
+        <div id="searchResults" class="list-box">
+            <div class="empty-state">
+                <span class="material-icons empty-state-icon">search</span>
+                <p>Enter a keyword to search feedback</p>
+            </div>
+        </div>
+    </div>
+
+<script src="../assets/js/utils/modal.js"></script>
+<script src="../assets/js/api/auth.js"></script>
+<script src="../assets/js/api/feedback.js"></script>
+<script src="../assets/js/pages/search-feedback.js"></script>
+
+</body>
+</html>

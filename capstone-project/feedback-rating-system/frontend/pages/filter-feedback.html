@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filter Feedback - FeedbackHub</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Modal & Toast Containers -->
+    <div id="modal-container"></div>
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h2>FeedbackHub</h2>
+        <div class="navbar-links">
+            <a href="dashboard.html">Dashboard</a>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <button class="back-btn" onclick="goBack()">
+            <span class="material-icons" style="font-size: 1rem;">arrow_back</span>
+            Back to Dashboard
+        </button>
+
+        <h1 class="fade-in">Filter Feedback</h1>
+        <p class="text-muted mb-4">Filter feedback by rating or date range</p>
+
+        <!-- Filter by Rating -->
+        <div class="form-box fade-in mb-4">
+            <h3 class="text-left mb-3">
+                <span class="material-icons text-accent" style="vertical-align: middle;">star</span>
+                Filter by Rating
+            </h3>
+            <div class="input-group">
+                <div>
+                    <label for="minRating">Min Rating</label>
+                    <input type="number" id="minRating" placeholder="1" min="1" max="5" value="1" />
+                </div>
+                <div>
+                    <label for="maxRating">Max Rating</label>
+                    <input type="number" id="maxRating" placeholder="5" min="1" max="5" value="5" />
+                </div>
+                <button onclick="filterByRating()">
+                    <span class="material-icons" style="font-size: 1rem;">filter_alt</span>
+                    Filter
+                </button>
+            </div>
+        </div>
+
+        <!-- Filter by Date -->
+        <div class="form-box fade-in mb-4">
+            <h3 class="text-left mb-3">
+                <span class="material-icons text-accent" style="vertical-align: middle;">date_range</span>
+                Filter by Date
+            </h3>
+            <div class="input-group">
+                <div>
+                    <label for="startDate">Start Date</label>
+                    <input type="date" id="startDate" />
+                </div>
+                <div>
+                    <label for="endDate">End Date</label>
+                    <input type="date" id="endDate" />
+                </div>
+                <button onclick="filterByDate()">
+                    <span class="material-icons" style="font-size: 1rem;">filter_alt</span>
+                    Filter
+                </button>
+            </div>
+        </div>
+
+        <h2 class="text-left">Results</h2>
+        <div id="filterResults" class="list-box">
+            <div class="empty-state">
+                <span class="material-icons empty-state-icon">filter_list</span>
+                <p>Use the filters above to find feedback</p>
+            </div>
+        </div>
+    </div>
+
+<script src="../assets/js/utils/modal.js"></script>
+<script src="../assets/js/api/auth.js"></script>
+<script src="../assets/js/api/feedback.js"></script>
+<script src="../assets/js/pages/filter-feedback.js"></script>
+
+</body>
+</html>

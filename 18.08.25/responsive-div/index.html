@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="./styles.css">
+    
+</head>
+<body>
+    
+    <h1>CSS Box Model Demonstration</h1>
+    <section id="top-box">
+        
+        <div id="box">
+            <div id="layer1">
+                <div id="layer2">
+                    <div id="layer3">
+                        <div id="text-content">
+                            <p>Content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </section>
+    <section id="adjustment-box">
+        <div id="adj-box">
+            <div id="margin">
+                <p>Margin:</p>
+                <input type="range" id="marginRange" min="0" max="100" value="0">
+                <span id="marginValue">0px</span>
+            </div> 
+            <div id="border">
+                <p>Border:</p>
+                <input type="range" id="borderRange" min="0" max="100" value="0">
+                <span id="borderValue">0px</span>
+            </div>
+            <div id="padding">
+                <p>Padding:</p>
+                <input type="range" id="paddingRange" min="0" max="100" value="0">
+                <span id="paddingValue">0px</span>
+            </div>
+            <div id="padding">
+                <p>Content:</p>
+                <input type="range" id="contentRange" min="0" max="100" value="0">
+                <span id="contentValue">0px</span>
+            </div>
+           
+        </div>
+    </section>
+    
+    <section id="components">
+        <div id="components-box">
+            <h1>Box Model Components</h1>
+            <div class="component-row">
+                <div id="components-margin"></div>
+                <p>Margin - Space outside the border (transparent)</p>
+            </div>
+            <div class="component-row">
+                <div id="components-border"></div>
+                <p>Border - Surrounds the body and content</p>
+            </div>
+            <div class="component-row">
+                <div id="components-padding"></div>
+                <p>Padding - Space between body and content</p>
+            </div>
+            <div class="component-row">
+                <div id="components-content"></div>
+                <p>Content - Actual content of the box</p>
+            </div>
+        </div>
+    </section>
+    <script src="./script.js"></script>
+
+
+</body>
+</html>

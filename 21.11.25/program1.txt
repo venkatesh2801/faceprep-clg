@@ -1,0 +1,49 @@
+package nov19;
+public class OMRKing {
+    public static void main(String[] args) {
+        Phonepe p = new Phonepe();
+        p.checkBalance();
+        p.changeEmail();
+    }
+}
+
+class SBI{
+    private String acc_holder_name="Venkatesh";
+    private  long acc_balance=150000;
+    private String mail_id="venkatesh@gmail.com";
+
+    public String getAcc_holder_name() {
+        return acc_holder_name;
+    }
+
+    public void setAcc_holder_name(String acc_holder_name) {
+        this.acc_holder_name = acc_holder_name;
+    }
+
+    public String getMail_id() {
+        return mail_id;
+    }
+
+    public void setMail_id(String mail_id) {
+        this.mail_id = mail_id;
+    }
+
+    public long getAcc_balance() {
+        return acc_balance;
+    }
+
+    public void setAcc_balance(long acc_balance) {
+        this.acc_balance = acc_balance;
+    }
+    void changeEmail(){
+        System.out.println(getMail_id());
+        setMail_id("venky@gmail.com");
+        System.out.println(getMail_id());
+    }
+}
+
+class Phonepe extends  SBI{
+    void checkBalance(){
+        System.out.println(getAcc_balance());
+    }
+}

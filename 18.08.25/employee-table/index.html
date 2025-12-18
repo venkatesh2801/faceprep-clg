@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: rgba(0, 255, 255, 0.353);
+            font-size: large;
+        }
+        body > h1{
+            text-align: center;
+        }
+        #get-value{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+        }
+        .emp-details{
+            height: 300px;
+            width: 600px;
+            background-color: rgba(0, 0, 0, 0.23);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+            
+        }
+        .box{
+            margin-left: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+       #employee-table {
+        width: 600px;
+        margin: 0 auto;
+        margin-top: 20px;
+        border-collapse: collapse;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        font-size: 1rem;
+        }
+        #employee-table th, #employee-table td {
+            border: 1px solid #ccc;
+            padding: 12px 16px;
+            text-align: left;
+        }
+        #employee-table th {
+            background: #00bcd4;
+            color: #fff;
+            font-weight: 600;
+        }
+        #employee-table tbody tr:nth-child(even) {
+            background: #f2f9fa;
+        }
+        #employee-table tbody tr:hover {
+            background: #e0f7fa;
+        }
+        input{
+            width: 200px;
+            height: 20px;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 0 5px 8px black;
+
+        }
+        .box > button{
+            border: none;
+            cursor: pointer;
+            font-size: large;
+            background-color: #00bcd4;
+            box-shadow: 1px 5px 5px black;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <h1>Add Employee</h1>
+    <section id="get-value">
+        <div class="emp-details">
+            <div class="box">
+                <p>Enter Employee's Name:</p>
+                <input type="text" placeholder="Enter Name" id="emp-name" required>
+            </div>
+            <div class="box">
+                <p>Enter Employee's Age:</p>
+                <input type="text" placeholder="Enter Age" id="emp-age" required>
+            </div>
+            <div class="box">
+                <p>Enter Employee's City:</p>
+                <input type="text" placeholder="Enter City" id="emp-city" required>
+            </div>
+            <div class="box">
+                <button id="add-employee" style="margin-left: 200px;">Add Employee</button>
+
+            </div>
+        </div>
+        
+ 
+    </section>
+    <section id="show-value">
+        <table id="employee-table" border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>City</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+
+        </table>
+    </section>
+    <script src="./script.js"></script>
+</body>
+</html>

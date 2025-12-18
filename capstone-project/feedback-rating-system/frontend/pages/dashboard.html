@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - FeedbackHub</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Modal & Toast Containers -->
+    <div id="modal-container"></div>
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h2>FeedbackHub</h2>
+        <div class="navbar-links">
+            <span id="userGreeting" class="text-muted"></span>
+            <button class="logout-btn" onclick="logout()">
+                <span class="material-icons" style="font-size: 1rem;">logout</span>
+                Logout
+            </button>
+        </div>
+    </nav>
+
+    <div class="container fade-in">
+        <h1 id="welcomeText">Welcome!</h1>
+        <p class="text-muted mb-4">What would you like to do today?</p>
+
+        <!-- User Actions -->
+        <div class="card-grid" id="userCards">
+            <div class="card" onclick="goTo('submit-feedback.html')">
+                <span class="material-icons card-icon">rate_review</span>
+                <h3>Submit Feedback</h3>
+                <p>Rate and review a service provider</p>
+            </div>
+
+            <div class="card" onclick="goTo('view-feedback.html')">
+                <span class="material-icons card-icon">history</span>
+                <h3>My Feedback</h3>
+                <p>View feedback you've submitted</p>
+            </div>
+
+            <div class="card" onclick="goTo('search-feedback.html')">
+                <span class="material-icons card-icon">search</span>
+                <h3>Search Feedback</h3>
+                <p>Search feedback by keywords</p>
+            </div>
+
+            <div class="card" onclick="goTo('filter-feedback.html')">
+                <span class="material-icons card-icon">filter_alt</span>
+                <h3>Filter Feedback</h3>
+                <p>Filter by rating or date range</p>
+            </div>
+        </div>
+
+        <!-- Provider Actions (shown only for providers) -->
+        <div class="card-grid hidden" id="providerCards">
+            <div class="card" onclick="goTo('provider-dashboard.html')">
+                <span class="material-icons card-icon">dashboard</span>
+                <h3>Provider Dashboard</h3>
+                <p>View your ratings and feedback received</p>
+            </div>
+        </div>
+    </div>
+
+<script src="../assets/js/utils/modal.js"></script>
+<script src="../assets/js/api/auth.js"></script>
+<script src="../assets/js/pages/dashboard.js"></script>
+
+</body>
+</html>

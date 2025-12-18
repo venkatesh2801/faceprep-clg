@@ -1,0 +1,57 @@
+package nov19;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+public class OMRKing {
+    public static void main(String args[]) {
+        //1. Print an array in Java
+        int[] intArray = { 1, 2, 3, 4, 5 };
+        String intArrayString = Arrays.toString(intArray);
+        System.out.println(intArray);
+        System.out.println(intArrayString);
+
+        //3.Check if an array contains a certain value
+        String[] stringArray1 = { "abc", "bcd", "cba", "dcb", "efg" };
+        boolean b = Arrays.asList(stringArray1).contains("abc");
+        System.out.println(b);
+
+        //4. Concatenate two arrays
+        int[] intArray = { 1, 2, 3, 4, 5 };
+        int[] intArray2 = { 6, 7, 8, 9, 10 };
+        int a[] = ArrayUtils.addAll(intArray, intArray2);
+        String s = Arrays.toString(a);
+        System.out.println(s);
+
+        //6. Joins the elements of the provided array into a single String
+        String j = StringUtils.join(new String[] { "a", "b", "c" }, ", ");
+        System.out.println(j);
+
+        //7. Covnert an ArrayList to an array
+        String[] stringArray = { "a", "b", "c", "d", "e" };
+        ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(stringArray));
+        String[] stringArr = new String[arrayList.size()];
+        arrayList.toArray(stringArr);
+        for (String s : stringArr)
+            System.out.println(s);
+        
+        //8.Convert an array to a set
+        String[] s1 = { "a", "b", "c", "d", "e","a" };
+        Set<String> set123 = new HashSet<String>(Arrays.asList(s1));
+        System.out.println(set123);
+
+        //9. Reverse an array
+        int[] intArray3 = { 1, 2, 3, 4, 5 };
+        ArrayUtils.reverse(intArray3);
+        System.out.println(Arrays.toString(intArray3));
+
+        //10. Remove element of an array
+        int[] intArray4 = { 1, 2, 3, 4, 5 };
+        int[] removed = ArrayUtils.removeElement(intArray4, 3);//create a new array
+        System.out.println(Arrays.toString(removed));
+        
+    }
+
+}
